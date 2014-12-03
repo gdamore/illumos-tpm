@@ -28,7 +28,7 @@
 #
 set name=pkg.fmri value=pkg:/system/tpm@$(PKGVERS)
 set name=pkg.description value="Trusted Platform Module - library and utility"
-set name=pkg.summary value="Core Solaris, (Shared Libs)"
+set name=pkg.summary value="Trusted Platform Module - library and utility"
 set name=info.classification value=org.opensolaris.category.2008:System/Core
 set name=variant.arch value=$(ARCH)
 dir path=usr group=sys

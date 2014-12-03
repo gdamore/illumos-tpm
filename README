@@ -1,0 +1,36 @@
+illumos-tpm README - Dec 3, 2014.
+
+Copyright 2014 Garrett D'Amore <garrett@damore.org>
+
+This tree is an extraction of the TPM driver & PKCS#11 module from
+illumos-gate.
+
+The TPM module offers a limited set of cryptographic services, and
+is intended as a starting point for secure key management, etc.
+It requires the TrouSerS package (SUNWtss historically) and thus also
+OpenSSL.
+
+In practice, its likely that these are of little utility, since the
+necessary cryptographic signing of executable code, and connection to
+firmware, mean that a true trusted platform is not really viable
+for illumos distributions.  (Apparently Oracle Solaris 11 can get there
+but only on T5 based SPARC systems.)
+
+The idea is that this represents a new "consolidation" separate from illumos
+proper, so that distributions that have no need for these bits can dispense
+with them.
+
+This builds like illumos-gate, and has packages.  However, it needs the
+following to be installed on the build system:
+
+	* pkg:/library/security/trousers
+	* pkg:/developer/build/onbld
+
+It does not support linting -- the problem is that some header files are
+included that ultimately include non-delivered header files, when lint
+is defined.  This comes about as a result of use of some private header
+files by the TPM kernel driver.
+
+Also, you'll need the appropriate C compiler.  It should use the
+same as illumos-gate to build.
+
